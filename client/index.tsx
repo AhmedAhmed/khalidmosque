@@ -1,0 +1,17 @@
+import * as React from 'react';
+import { render } from 'react-dom'
+import { createStore, applyMiddleware } from 'redux'
+import thunk from 'redux-thunk'
+import {createBrowserHistory} from 'history';
+import { Provider } from 'react-redux';
+import App from './containers/App';
+import reducer from './reducers/index';
+
+const store : any = createStore(reducer, applyMiddleware(thunk));
+
+render(
+  <Provider store={store}>
+    <App />
+  </Provider>, 
+  document.getElementById('root')
+);
