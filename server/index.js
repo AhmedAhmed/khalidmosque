@@ -1,4 +1,8 @@
 const app = require("./app");
+const restify = require('restify');
+const restifyPlugins = require('restify-plugins');
+const fs = require('fs');
+const path = require('path');
 const config = require('../config');
 const mongoose = require('mongoose');
 
@@ -20,6 +24,21 @@ const serverInstance = app.listen(port, () => {
   db.once('open', () => {
     require('./routes')(app);
     
+    // Render Index.html file.
+    app.get(/.*/, function (req, res, next) {
+      fs.readFile(__dirname + '/../public/index.html', function (err, data) {
+        if (err) {
+          next(err);
+          return;
+        }
+
+        res.setHeader('Content-Type', 'text/html');
+        res.writeHead(200);
+        res.end(data);
+        next();
+      });
+    });
+
     console.info('\x1b[33m%s\x1b[0m', ' Flite! Created by Ahmed Ahmed');
     console.info("\x1b[36m", 'We recommend that you use nodemon in development.');
     console.info("\x1b[34m", 'Server is running on -> http://' + config.server.host + ":" + port);

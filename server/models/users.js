@@ -28,6 +28,11 @@ const UserSchema = new mongoose.Schema({
     required: true,
     trim: true
   },
+  salt: {
+    type: String,
+    required: true,
+    trim: true
+  },
   roles: {
     type: String,
     required: true,
@@ -39,5 +44,4 @@ const UserSchema = new mongoose.Schema({
 UserSchema.plugin(timestamps);
 UserSchema.plugin(mongooseStringQuery);
 
-const User = mongoose.model('User', UserSchema);
-module.exports = User;
+module.exports = mongoose.model('User', UserSchema);

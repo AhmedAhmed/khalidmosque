@@ -19,28 +19,10 @@ app.use((req, res, next) => {
 
 // Restify Set-Up.
 app.use(restify.bodyParser());
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
-app.use(restifyPlugins.fullResponse());
 
 // Static Files
 app.get(/static\/?(bundles|images|media)\/.*/, restify.serveStatic({
   directory: __dirname + "/../public"
 }));
-
-// Render Index.html file.
-app.get(/.*/, function (req, res, next) {
-  fs.readFile(__dirname + '/../public/index.html', function (err, data) {
-    if (err) {
-      next(err);
-      return;
-    }
-
-    res.setHeader('Content-Type', 'text/html');
-    res.writeHead(200);
-    res.end(data);
-    next();
-  });
-});
 
 module.exports= app;

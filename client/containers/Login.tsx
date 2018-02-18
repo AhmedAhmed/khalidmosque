@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 
 import { asyncComponent } from '../utils/asyncComponent';
 
-import * as AppActions from '../actions';
+import AppActions from '../actions';
 import { Dispatch } from 'redux';
 
 interface Props {
@@ -47,7 +47,7 @@ class Login extends React.Component<any, State> {
             <button className={styles.blueButton}>Login</button>
           </div>
         </div>
-        <Link to="/signup" className={styles.forgotLink}>← Back to Sign Up</Link>
+        <Link to="/signup" className={styles.forgotLink}>← Sign up for an Account.</Link>
       </div>
     )
   }

@@ -5,7 +5,7 @@ module.exports = {
     host:"localhost",
     port: process.env.PORT || 3030,
     db: {
-      uri: 'mongodb://127.0.0.1:27017/khalidmosque',
+      uri: 'mongodb://127.0.0.1/khalidmosque',
     },
     env: process.env.NODE_ENV || 'development'
   }

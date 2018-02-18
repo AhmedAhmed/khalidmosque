@@ -7,7 +7,7 @@ import { BrowserRouter, Router,Route, Switch, Link } from 'react-router-dom';
 
 import {asyncComponent} from '../utils/asyncComponent';
 
-import * as AppActions from '../actions';
+import AppActions from '../actions';
 import Home from './Home';
 
 import { Dispatch } from 'redux';
@@ -38,11 +38,11 @@ class App extends React.Component<any,any> {
 }
 
 interface State {
-  
+  user: object;
 }
 
 const mapStateToProps = (state: State) => ({
-  
+  user: state.user
 });
 
 const mapDispatchToProps = (dispatch: Dispatch<any>) => ({

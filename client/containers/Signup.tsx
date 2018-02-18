@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 
 import { asyncComponent } from '../utils/asyncComponent';
 
-import * as AppActions from '../actions';
+import AppActions from '../actions';
 import { Dispatch } from 'redux';
 
 const styles = require("./home.scss");
@@ -17,13 +17,23 @@ interface Props {
 }
 
 interface State {
-  view: boolean;
+  name: string;
+  email: string;
+  username: string;
+  password: string;
 }
 
 class Signup extends React.Component<any, State> {
 
   constructor(props: any) {
     super(props);
+
+    this.state = {
+      name: "",
+      email: "",
+      username: "",
+      password: ""
+    }
   }
 
   componentWillMount() {
@@ -32,7 +42,11 @@ class Signup extends React.Component<any, State> {
 
   _register = (evt:any) => {
     evt.preventDefault();
-    alert("hello");
+    
+    this.props.actions.registerUser( this.state.name, this.state.email, 
+        this.state.username, this.state.password, "user" ).then((response:any) => {
+          this.props.history.push("/");
+        });
   }
 
   render() {
@@ -44,15 +58,15 @@ class Signup extends React.Component<any, State> {
         <div className={styles.box}>
           <div className={styles.boxWrap}> 
             <form className={styles.form} onSubmit={this._register.bind(this)}>
-              <input type="text" className={styles.inputtext} name="name" placeholder="Full Name" />
-              <input type="text" className={styles.inputtext} name="username" placeholder="Username" />
-              <input type="text" className={styles.inputtext} name="email" placeholder="Email" />
-              <input type="password" className={styles.inputtext} name="password" placeholder="Password" />
-              <button className={styles.redButton}>Register</button>
+              <input type="text" className={styles.inputtext} name="name" placeholder="Full Name" onKeyUp={(evt:any) => this.setState({name:evt.target.value})} />
+              <input type="text" className={styles.inputtext} name="username" placeholder="Username" onKeyUp={(evt: any) => this.setState({ username: evt.target.value })} />
+              <input type="text" className={styles.inputtext} name="email" placeholder="Email" onKeyUp={(evt: any) => this.setState({ email: evt.target.value })} />
+              <input type="password" className={styles.inputtext} name="password" placeholder="Password" onKeyUp={(evt: any) => this.setState({ password: evt.target.value })} />
+              <button className={styles.blueButton}>Register</button>
             </form>
           </div>
         </div>
-        <Link to="/login" className={styles.forgotLink}>← Back to Login</Link>
+        <Link to="/" className={styles.forgotLink}>← Have an account? Sign In.</Link>
       </div>
     )
   }

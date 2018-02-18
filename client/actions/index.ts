@@ -1,1 +1,3 @@
-import * as types from '../constants/ActionTypes';
+import * as AccountActions from './AccountActions';
+
+export default AccountActions;
