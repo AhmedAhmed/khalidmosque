@@ -8,5 +8,6 @@ module.exports = {
       uri: 'mongodb://127.0.0.1/khalidmosque',
     },
     env: process.env.NODE_ENV || 'development'
-  }
+  },
+  "secret": "iLoveAllah"
 }

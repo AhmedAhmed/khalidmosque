@@ -1,6 +1,8 @@
 const bcrypt = require('bcrypt');
+const jwt = require("jsonwebtoken");
 
 const User = require("../models/users");
+const config = require("../../config");
 
 module.exports = function( server ){
 
@@ -86,6 +88,40 @@ module.exports = function( server ){
       status: 200,
       id: req.params.id,
       messages: "Delete user from table with id => " + req.params.id
+    });
+  });
+
+  // Authentication
+  server.post("/api/auth", ( req, res, next ) => {
+    const username = req.params.username,
+          password = req.params.password;
+
+    //find the user.
+    User.findOne({
+      username
+    }).then(user => {
+      //perform hash on pass.
+      if( user ){
+        //now do the hashing and check password.
+        const passHash = bcrypt.hashSync(password, user.salt);
+        if( user.password == passHash ){
+          //password correct now create token and send it back as json.
+          user = user.toJSON();
+          delete user.password;
+          delete user.salt;
+          const token = jwt.sign( user, config.secret );
+          res.json({
+            message: "Login successfull",
+            token,
+            user
+          });
+        }
+
+      } else {
+        res.json({
+          message: "Username is incorrect"
+        });
+      }
     });
   });
 
