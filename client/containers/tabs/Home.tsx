@@ -5,18 +5,17 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { BrowserRouter, Router, Route, Switch, Link } from 'react-router-dom';
 
-import { asyncComponent } from '../utils/asyncComponent';
+import { asyncComponent } from '../../utils/asyncComponent';
 
-import AppActions from '../actions';
+import AppActions from '../../actions';
 import { Dispatch } from 'redux';
-
-import {Login, Signup} from "./";
 
 interface Props {
   actions: any;
+  user: object|any;
 }
 
-const styles = require("./home.scss");
+const styles = require("./tabs.scss");
 
 interface State {
   view: boolean;
@@ -38,30 +37,24 @@ class Home extends React.Component<Props, State> {
 
   render() {
     return (
-      <BrowserRouter>
-        <section className={styles.page}>
-          <main className={styles.main}>
-            <section className={styles.section}>
-              <Switch>
-                <Route exact path="/" render={(props) => <Login {...this.props} {...props} />} />
-                <Route path="/login" render={(props) => <Login {...this.props} {...props} />} />
-                <Route path="/signup" render={(props) => <Signup {...this.props} {...props} />} />
-                <Route path="/:page" render={(props) => <Login {...this.props} {...props} />} />
-              </Switch>
-            </section>
-          </main>
+      <section className={styles.dashmain}>
+        <header className={styles.header}>
+          <h2>DASHBOARD</h2>
+        </header>
+        <section>
+
         </section>
-      </BrowserRouter>
+      </section>
     )
   }
 }
 
 interface State {
-  
+
 }
 
 const mapStateToProps = (state: State) => ({
-  
+
 });
 
 const mapDispatchToProps = (dispatch: Dispatch<any>) => ({

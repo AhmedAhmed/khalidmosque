@@ -10,19 +10,17 @@ import { asyncComponent } from '../utils/asyncComponent';
 import AppActions from '../actions';
 import { Dispatch } from 'redux';
 
-import {Login, Signup} from "./";
-
 interface Props {
   actions: any;
 }
 
-const styles = require("./home.scss");
+const styles = require("./splash.scss");
 
 interface State {
   view: boolean;
 }
 
-class Home extends React.Component<Props, State> {
+class Splash extends React.Component<Props, State> {
 
   constructor(props: any) {
     super(props);
@@ -38,30 +36,19 @@ class Home extends React.Component<Props, State> {
 
   render() {
     return (
-      <BrowserRouter>
-        <section className={styles.page}>
-          <main className={styles.main}>
-            <section className={styles.section}>
-              <Switch>
-                <Route exact path="/" render={(props) => <Login {...this.props} {...props} />} />
-                <Route path="/login" render={(props) => <Login {...this.props} {...props} />} />
-                <Route path="/signup" render={(props) => <Signup {...this.props} {...props} />} />
-                <Route path="/:page" render={(props) => <Login {...this.props} {...props} />} />
-              </Switch>
-            </section>
-          </main>
-        </section>
-      </BrowserRouter>
+      <div className={styles.splash}>
+        <img src="/static/images/logo.png" height="200px" width="200px"/>
+      </div>
     )
   }
 }
 
 interface State {
-  
+
 }
 
 const mapStateToProps = (state: State) => ({
-  
+
 });
 
 const mapDispatchToProps = (dispatch: Dispatch<any>) => ({
@@ -72,4 +59,4 @@ const mapDispatchToProps = (dispatch: Dispatch<any>) => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Home);
+)(Splash);

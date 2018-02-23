@@ -14,6 +14,7 @@ const styles = require("./home.scss");
 
 interface Props {
   actions: any;
+  history: any;
 }
 
 interface State {
@@ -23,7 +24,7 @@ interface State {
   password: string;
 }
 
-class Signup extends React.Component<any, State> {
+class Signup extends React.Component<Props, State> {
 
   constructor(props: any) {
     super(props);
@@ -36,13 +37,9 @@ class Signup extends React.Component<any, State> {
     }
   }
 
-  componentWillMount() {
-
-  }
-
   _register = (evt:any) => {
     evt.preventDefault();
-    
+
     this.props.actions.registerUser( this.state.name, this.state.email, 
         this.state.username, this.state.password, "user" ).then((response:any) => {
           this.props.history.push("/");

@@ -17,7 +17,8 @@ interface Props {
 const styles = require("./home.scss");
 
 interface State {
-  view: boolean;
+  username: string;
+  password: string;
 }
 
 class Login extends React.Component<any, State> {
@@ -26,12 +27,23 @@ class Login extends React.Component<any, State> {
     super(props);
 
     this.state = {
-      view: true
+      username:"",
+      password:""
     }
   }
 
   componentWillMount() {
 
+  }
+
+  _login = (evt:any) => {
+    evt.preventDefault();
+    this.props.actions.loginUser(this.state.username, this.state.password)
+                      .then((response:any) => {
+                        if(response.payload.status == 200){
+                          localStorage.setItem("token", response.payload.token);
+                        }
+                      });
   }
 
   render() {
@@ -42,9 +54,11 @@ class Login extends React.Component<any, State> {
         </div>
         <div className={styles.box}>
           <div className={styles.boxWrap}>
-            <input type="text" className={styles.inputtext} name="username" placeholder="Username" />
-            <input type="password" className={styles.inputtext} name="password" placeholder="Password" />
-            <button className={styles.blueButton}>Login</button>
+            <form onSubmit={this._login.bind(this)}>
+            <input type="text" className={styles.inputtext} name="username" onKeyUp={(evt:any) => this.setState({username: evt.target.value})} placeholder="Username" />
+            <input type="password" className={styles.inputtext} name="password" onKeyUp={(evt:any) => this.setState({password: evt.target.value})} placeholder="Password" />
+            <button onClick={this._login.bind(this)} className={styles.blueButton}>Login</button>
+            </form>
           </div>
         </div>
         <Link to="/signup" className={styles.forgotLink}>← Sign up for an Account.</Link>

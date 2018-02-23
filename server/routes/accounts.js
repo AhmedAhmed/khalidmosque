@@ -111,18 +111,39 @@ module.exports = function( server ){
           delete user.salt;
           const token = jwt.sign( user, config.secret );
           res.json({
+            status: 200,
             message: "Login successfull",
             token,
             user
           });
         }
-
       } else {
         res.json({
+          status: 404,
           message: "Username is incorrect"
         });
       }
+      res.json({
+        status: 404,
+        message: "Username is incorrect"
+      });
     });
+  });
+
+  server.post("/api/presence", (req, res, next) => {
+    const user = req.params.token != null? jwt.verify(req.params.token, config.secret):null;
+
+    if(user != null){
+      res.json({
+        message: "Reauthenticated",
+        isLoggedIn: true,
+        user
+      });
+    } else {
+      res.json({
+        message: "Login again"
+      });
+    }
   });
 
 }

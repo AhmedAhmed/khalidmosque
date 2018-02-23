@@ -1,0 +1,11 @@
+@import "../colors.scss";
+@import "../base.scss";
+
+.splash {
+  background: white;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
