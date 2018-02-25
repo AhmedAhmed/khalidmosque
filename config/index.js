@@ -3,7 +3,7 @@ module.exports = {
     "name":"khalidmosque",
     "version":"1.0.0",
     host:"localhost",
-    port: process.env.PORT || 3030,
+    port: process.env.PORT || 3000,
     db: {
       uri: 'mongodb://127.0.0.1/khalidmosque',
     },

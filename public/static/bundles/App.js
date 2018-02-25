@@ -13124,7 +13124,7 @@ var Home = /** @class */ (function (_super) {
         return (React.createElement("section", { className: styles.dashmain },
             React.createElement("header", { className: styles.header },
                 React.createElement("h2", null, "DASHBOARD")),
-            React.createElement("section", { className: "" })));
+            React.createElement("section", { className: styles.paper })));
     };
     return Home;
 }(React.Component));
@@ -13619,12 +13619,13 @@ exports = module.exports = __webpack_require__(24)();
 
 
 // module
-exports.push([module.i, "._1tjUq{height:100%;width:100%}._3-ozK{display:flex;box-sizing:border-box;padding-left:20px;height:60px;width:100%}", ""]);
+exports.push([module.i, "._1tjUq{height:100%;width:100%}._3-ozK{display:flex;box-sizing:border-box;padding-left:20px;height:60px;width:100%}._2MhW0{background:#fff;box-shadow:0 7px 14px 0 rgba(50,50,93,.1),0 3px 6px 0 rgba(0,0,0,.07);border-radius:4px;display:flex;margin:0 20px;min-height:300px;min-width:300px}", ""]);
 
 // exports
 exports.locals = {
 	"dashmain": "_1tjUq",
-	"header": "_3-ozK"
+	"header": "_3-ozK",
+	"paper": "_2MhW0"
 };
 
 /***/ }),

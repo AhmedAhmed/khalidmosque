@@ -31,17 +31,17 @@ class Home extends React.Component<Props, State> {
     }
   }
 
-  componentWillMount() {
-
+  componentWillMount() : void {
+    
   }
 
-  render() {
+  render() :JSX.Element {
     return (
       <section className={styles.dashmain}>
         <header className={styles.header}>
           <h2>DASHBOARD</h2>
         </header>
-        <section>
+        <section className={styles.paper}>
 
         </section>
       </section>

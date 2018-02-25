@@ -123,10 +123,6 @@ module.exports = function( server ){
           message: "Username is incorrect"
         });
       }
-      res.json({
-        status: 404,
-        message: "Username is incorrect"
-      });
     });
   });
 
