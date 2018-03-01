@@ -37,7 +37,9 @@ class Settings extends React.Component<Props, State> {
   render() {
     return (
       <section className={styles.dashmain}>
-        <header className={styles.header}>Settings</header>
+        <header className={styles.header}>
+          <h2>Settings</h2>
+        </header>
       </section>
     )
   }

@@ -37,7 +37,9 @@ class Wordpress extends React.Component<Props, State> {
   render() {
     return (
       <section className={styles.dashmain}>
-        <header className={styles.header}>Wordpress</header>
+        <header className={styles.header}>
+          <h2>Wordpress</h2>
+        </header>
       </section>
     )
   }

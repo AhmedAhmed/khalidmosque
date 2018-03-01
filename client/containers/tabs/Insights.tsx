@@ -37,7 +37,9 @@ class Insights extends React.Component<Props, State> {
   render() {
     return (
       <section className={styles.dashmain}>
-        <header className={styles.header}>Insights</header>
+        <header className={styles.header}>
+          <h2>Insights</h2>
+        </header>
       </section>
     )
   }

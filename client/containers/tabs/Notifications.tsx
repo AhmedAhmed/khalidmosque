@@ -37,7 +37,9 @@ class Notifications extends React.Component<Props, State> {
   render() {
     return (
       <section className={styles.dashmain}>
-        <header className={styles.header}>Notifications</header>
+        <header className={styles.header}>
+          <h2>Notifications</h2>
+        </header>
       </section>
     )
   }

@@ -37,7 +37,9 @@ class Users extends React.Component<Props, State> {
   render() {
     return (
       <section className={styles.dashmain}>
-        <header className={styles.header}>Users</header>
+        <header className={styles.header}>
+          <h2>Users</h2>
+        </header>
       </section>
     )
   }

@@ -4,14 +4,14 @@
 
 body, html {
   display: block;
-  font-family: 'Roboto', Arial, Helvetica, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   width: 100%;
   height:100%;
 }
 
 .page {
   background: #E6EBF1;
-  display: block;
-  height: 100%;
+  display: flex;
   width: 100%;
+  min-height: 100%;
 }

@@ -37,7 +37,9 @@ class Prayers extends React.Component<Props, State> {
   render() {
     return (
       <section className={styles.dashmain}>
-        <header className={styles.header}>Prayers</header>
+        <header className={styles.header}>
+          <h2>Prayers</h2>
+        </header>
       </section>
     )
   }
