@@ -13,9 +13,10 @@ import { Dispatch } from 'redux';
 import {Home, Insights, Notifications, Prayers, Settings, Users, Wordpress} from './tabs'
 
 interface Props {
-  actions: any;
-  history: any;
-  user: any;
+  readonly actions: any;
+  readonly history: any;
+  readonly user: any;
+  readonly fetchPosts:Function;
 }
 
 const styles = require("./dash.scss");
@@ -26,13 +27,13 @@ interface State {
 
 class Dashboard extends React.Component<Props, State> {
 
-  constructor(props: any) {
+  constructor(readonly props: any) {
     super(props);
   }
 
   componentDidMount(){
     //send people back to main page if not logged in.
-    
+    this.props.fetchPosts();
   }
 
   _logout = (evt:any) => {
@@ -41,18 +42,43 @@ class Dashboard extends React.Component<Props, State> {
     this.props.actions.logoutHandler();
   }
 
+  _renderTitle = () : string => {
+    let result : string = this.props.user.data.roles;
+    switch( this.props.user.data.roles ){
+      case "admin":
+        result = "Administrator";
+        break;
+      case "editor":
+        result = "Editor";
+        break;
+      case "moderator":
+        result = "Moderator";
+        break;
+      case "analyst":
+        result = "Analyst";
+        break;
+      case "user":
+        result = "User";
+        break;
+    }
+    // 'editor', 'moderator', 'analyst'
+    return result;
+  }
+
   render() {
     return (
       <BrowserRouter>
         <section className={styles.page}>
           <main className={styles.main}>
             <div className={styles.sidebar} role="navigation">
-              <div className={styles.header}>{this.props.user.data.name}</div>
+              <div className={styles.header}>
+                <span className={styles.userTitle}>{this._renderTitle()}</span>
+              </div>
               <ul className={styles.nav_list}>
                 <li className={styles.nav_item}>
                   <NavLink to="/" exact activeClassName={styles.selected}>
                     <span className={styles.NavIcon +" "+ styles.NavIconHome}></span>
-                    <span className={styles.NavText}>Dashboard</span>
+                    <span className={styles.NavText}>Overview</span>
                   </NavLink>
                 </li>
                 <li className={styles.nav_item}>
@@ -119,14 +145,19 @@ class Dashboard extends React.Component<Props, State> {
 
 interface State {
   user: object;
+  wp_posts: object;
 }
 
 const mapStateToProps = (state: State) => ({
-  user: state.user
+  user: state.user,
+  wp_posts: state.wp_posts
 });
 
 const mapDispatchToProps = (dispatch: Dispatch<any>) => ({
   actions: bindActionCreators(AppActions, dispatch),
+  fetchPosts:() => {
+    dispatch(AppActions.getWpPosts());
+  },
   dispatch
 });
 

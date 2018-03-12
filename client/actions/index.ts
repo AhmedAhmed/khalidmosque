@@ -1,3 +1,3 @@
-import * as AccountActions from './AccountActions';
+import * as AppActions from './AppActions';
 
-export default AccountActions;
+export default AppActions;

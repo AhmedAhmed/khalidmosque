@@ -6,13 +6,24 @@
   width: 100%;
 }
 .header {
+  background:#34495e;
+  color:#FFF;
   display: flex;
   box-sizing: border-box;
   padding-left: 20px;
   height: 60px;
   width: 100%;
 }
-
+.actionHeader {
+  display: flex;
+  box-sizing: border-box;
+  border-top: 1px #EEE solid;
+  padding: 15px;
+  width: 100%;
+}
+.actionHeader a {
+  margin-right: 20px;
+}
 
 // Home tab
 .prayerSection {
@@ -36,4 +47,11 @@
   font-size: 25px;
   padding-bottom: 20px;
   white-space: nowrap;
+}
+
+.wp_list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
 }

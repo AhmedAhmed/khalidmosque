@@ -7,13 +7,13 @@ interface State {
 }
 
 interface Props {
-  theme: string;
+  theme?: string;
   title: string;
-  background: string;
-  flex: string;
+  background?: string;
+  flex?: string;
 }
 
-export default class Paper extends React.Component<Props, State> {
+export default class Tile extends React.Component<Props, State> {
 
   public static defaultProps: Partial<Props> = {
     theme:"dark",
@@ -25,15 +25,15 @@ export default class Paper extends React.Component<Props, State> {
     super(props);
   }
 
-  renderStyles = (): string => this.props.theme == "dark" ? styles.paper + " " + styles.paperDark: styles.paper + " " + styles.paperLight;
+  renderStyles = (): string => this.props.theme == "dark" ? styles.tile + " " + styles.tileDark: styles.tile + " " + styles.tileLight;
 
   render():JSX.Element {
     return (
       <section style={{ "background": this.props.background}} className={this.renderStyles()}>
-        <div className={styles.paperHeader}>
-          <span className={styles.paperTitle}>{this.props.title}</span>
+        <div className={styles.tileHeader}>
+          <span className={styles.tileTitle}>{this.props.title}</span>
         </div>
-        <div style={{ "flex": this.props.flex }} className={styles.paperContent}>
+        <div style={{ "flex": this.props.flex }} className={styles.tileContent}>
           {this.props.children}
         </div>
       </section>

@@ -11,7 +11,7 @@ module.exports = function( server ){
     res.json({
       status: 301,
       users: [],
-      messages: "Available Routes -> /api/users/:id, /api/users/create, /api/users/:id/delete"
+      messages: "Available Routes ❯ /api/users/:id, /api/users/create, /api/users/:id/delete"
     });
   });
 

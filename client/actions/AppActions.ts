@@ -17,11 +17,24 @@ export const presenceReceived = (json: any) : ActionResponse => ({type: types.PR
 export const logoutRequest = () : ActionResponse => ({type: types.LOGOUT_REQUEST, payload:{}});
 export const logoutReceived = (json: any) : ActionResponse => ({type: types.LOGOUT_RECEIVED, payload:json});
 
+export const WpPostRequest = () : ActionResponse => ({type: types.WP_POST_REQUEST, payload:{isFetching:true}});
+export const WpPostReceived = (json:any) : ActionResponse => ({type: types.WP_POST_RECEIVED, payload: {isFetching: false, json} })
+
 const getDomain = () => {
   var domain = window.location.hostname;
   var port = window.location.port;
 
   return domain + (port != "") ? domain + ":" + port : domain;
+}
+
+export const getWpPosts = () => (dispatch:any) : Promise<Response> => {
+  dispatch(WpPostRequest());
+
+  return fetch("https://www.khalidmosque.com/wp-json/wp/v2/posts?per_page=4", {
+    headers: {},
+    method: "GET"
+  }).then((response: any) => response.json())
+    .then((json: any) => dispatch(WpPostReceived(json)) );
 }
 
 export const registerUser = (name: string, email:string, username:string, password:string, roles: string) => (dispatch:any) => {

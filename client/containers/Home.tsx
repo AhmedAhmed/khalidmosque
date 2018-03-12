@@ -19,17 +19,13 @@ interface Props {
 const styles = require("./home.scss");
 
 interface State {
-  view: boolean;
+  
 }
 
 class Home extends React.Component<Props, State> {
 
   constructor(props: any) {
     super(props);
-
-    this.state = {
-      view: true
-    }
   }
 
   componentWillMount() {
@@ -57,7 +53,7 @@ class Home extends React.Component<Props, State> {
 }
 
 interface State {
-  
+  wp_posts:any;
 }
 
 const mapStateToProps = (state: State) => ({

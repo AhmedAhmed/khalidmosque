@@ -8,37 +8,48 @@ import { BrowserRouter, Router, Route, Switch, Link } from 'react-router-dom';
 import { asyncComponent } from '../../utils/asyncComponent';
 
 import AppActions from '../../actions';
-import Paper from '../../components/ui/paper';
+import Tile from '../../components/ui/tile';
+import WpPost from '../../components/ui/wpPost';
 import { Dispatch } from 'redux';
 
 interface Props {
   actions: any;
   user: object|any;
+  wp_posts: any;
 }
 
 const styles = require("./tabs.scss");
 
 interface State {
-  view: boolean;
+  
 }
 
 class Home extends React.Component<Props, State> {
+
+  public static defaultProps:Partial<any> = {
+    wp_posts: {
+      data: []
+    }
+  }
 
   constructor(props: any) {
     super(props);
   }
 
-  componentWillMount() : void {
-    
+  _wp_renderer = (): JSX.Element[] => this.props.wp_posts.data.map( (item:any, index:number) => <WpPost {...this.props} key={item.id} post={item}/> );
+
+  componentDidMount() : void {
+    //fetch posts.
+    this.props.actions.getWpPosts();
   }
 
   render() :JSX.Element {
     return (
       <section className={styles.dashmain}>
         <header className={styles.header}>
-          <h2>Dashboard</h2>
+          <h2>Overview</h2>
         </header>
-        <Paper flex="1" background="#27ae60" title="Masjid Prayer Times" theme="dark">
+        <Tile flex="1" background="#27ae60" title="Masjid Prayer Times" theme="dark">
           <div className={styles.prayerSection}>
             <h2>Fajr</h2>
             <span>6:00 AM</span>
@@ -59,10 +70,12 @@ class Home extends React.Component<Props, State> {
             <h2>Isha</h2>
             <span>7:45 PM</span>
           </div>
-        </Paper>
-        <Paper flex="0 1" background="#FFFFFF" title="Overview" theme="light">
-          
-        </Paper>
+        </Tile>
+        <Tile flex="0 1" background="#FFFFFF" title="Insights" theme="light">
+          <div className={styles.wp_list}>
+            {this._wp_renderer()}
+          </div>
+        </Tile>
       </section>
     )
   }

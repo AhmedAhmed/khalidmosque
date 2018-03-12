@@ -15,3 +15,64 @@ body, html {
   width: 100%;
   min-height: 100%;
 }
+
+.btn {
+  border: 0px;
+  border-radius: 3px;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: inline;
+  outline: none;
+  padding: 10px 15px;
+  text-decoration: none;
+  transition: all ease 0.3s;
+}
+.btn_blue {
+  background: $blue;
+  box-shadow: 0px 2px 20px rgba(0,0,0,0.25);
+  color:white;
+}
+.btn_blue:hover {
+  background:$lightBlue;
+  box-shadow: 0px 2px 3px rgba(0,0,0,0.25);
+}
+
+.btn_green {
+  background: $green;
+  box-shadow: 0px 2px 20px rgba(0,0,0,0.25);
+  color:white;
+}
+.btn_green:hover {
+  background:$lightGreen;
+  box-shadow: 0px 2px 3px rgba(0,0,0,0.25);
+}
+
+.btn_purple {
+  background: $purple;
+  box-shadow: 0px 2px 20px rgba(0,0,0,0.25);
+  color:white;
+}
+.btn_purple:hover {
+  background:$lightPurple;
+  box-shadow: 0px 2px 3px rgba(0,0,0,0.25);
+}
+
+.btn_red {
+  background: $red;
+  box-shadow: 0px 2px 20px rgba(0,0,0,0.25);
+  color:white;
+}
+.btn_red:hover {
+  background:$lightRed;
+  box-shadow: 0px 2px 3px rgba(0,0,0,0.25);
+}
+
+.btn_normal {
+  background: $white;
+  box-shadow: 0px 2px 20px rgba(0,0,0,0.25);
+  color:#333;
+}
+.btn_normal:hover {
+  background:$darkWhite;
+  box-shadow: 0px 2px 3px rgba(0,0,0,0.25);
+}

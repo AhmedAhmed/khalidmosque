@@ -1,0 +1,23 @@
+{
+  "presets": [
+    "dynamic-import-webpack",
+    [
+      "env",
+      {
+        "modules": true
+      }
+    ]
+  ],
+  "env": {
+    "test": {
+      "presets": [
+        [
+          "env",
+          {
+            "modules": true
+          }
+        ], "dynamic-import-webpack"
+      ]
+    }
+  }
+}

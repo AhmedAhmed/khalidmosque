@@ -20,14 +20,16 @@ interface Props {
 
 const styles = require("../base.scss");
 
-class App extends React.PureComponent<Props,any> {
+class App extends React.Component<Props,any> {
 
-  constructor( props: any ){
+  component:object = null;
+
+  constructor( readonly props: any ){
     super(props);
   }
 
   componentWillMount(){
-    this.props.getToken();
+    this.props.getToken(); 
   }
 
   _renderComponent = () : JSX.Element => {

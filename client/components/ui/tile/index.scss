@@ -1,23 +1,19 @@
 @import "../../../colors.scss";
-.paper {
+.tile {
   background: #FFF;
-  box-shadow: 0 7px 14px 0 rgba(50,50,93,.1), 0 3px 6px 0 rgba(0,0,0,.07);
-  border-radius: 4px;
   display: flex;
   flex-direction: column;
-  margin: 0 20px;
-  margin-bottom: 20px;
   min-height: 200px;
   min-width: 300px;
 }
-.paperDark {
+.tileDark {
   color:white;
 }
-.paperLight {
+.tileLight {
   color:inherit;
 }
 
-.paperHeader {
+.tileHeader {
   box-sizing: border-box;
   display: flex;
   flex: 0 1;
@@ -25,21 +21,21 @@
   padding: 15px;
   width: 100%;
 }
-.paperTitle {
+.tileTitle {
   font-size: 22px;
   font-weight: 400;
 }
 
-.paperTitleDivider {
+.tileTitleDivider {
   border-bottom: 1px  solid;
 }
-.paperContent {
+.tileContent {
   display:flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
 }
-.paperStripe {
+.tileStripe {
   background: #f6f9fc;
   display: flex;
   width: 100%;

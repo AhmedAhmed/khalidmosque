@@ -1,18 +1,18 @@
 var path = require('path');
 var webpack = require('webpack');
 
-const config = require("../config");
+const config = require("./config");
 
 module.exports = {
-  context: path.resolve(__dirname, "./"),
+  context: path.resolve(__dirname, "./client/"),
   entry: {
     App: './index.tsx',
     commons: ['jquery']
   },
   output: {
-    path: path.resolve(__dirname, "../public/static"),
+    path: path.resolve(__dirname, "./public/static"),
     filename: "./bundles/[name].js",
-    publicPath: "http://"+config.server.host+":"+config.server.port+"/static/"
+    publicPath: "http://" + config.server.host + ":" + config.server.port + "/static/"
   },
   resolve: {
     // Add '.ts' and '.tsx' as resolvable extensions.

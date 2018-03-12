@@ -16,15 +16,17 @@ const serverInstance = app.listen(port, () => {
 
   const db = mongoose.connection;
 
+  // handle database errors.
   db.on('error', (err) => {
     console.error(err);
     process.exit(1);
   });
 
+  //open DB connections.
   db.once('open', () => {
     require('./routes')(app);
     
-    // Render Index.html file.
+    // Route browser to index only. Redux handles the rest.
     app.get(/.*/, function (req, res, next) {
       fs.readFile(__dirname + '/../public/index.html', function (err, data) {
         if (err) {
@@ -39,9 +41,10 @@ const serverInstance = app.listen(port, () => {
       });
     });
 
+    //Let everyone know that the app is running.
     console.info('\x1b[33m%s\x1b[0m', ' Flite! Created by Ahmed Ahmed');
     console.info("\x1b[36m", 'We recommend that you use nodemon in development.');
-    console.info("\x1b[34m", 'Server is running on -> http://' + config.server.host + ":" + port);
+    console.info("\x1b[34m", 'Server is running on ==> http://' + config.server.host + ":" + port);
     console.info("\x1b[37m", "Press CTRL+C to quit");
   });
 });
